@@ -4,8 +4,6 @@
   "description": "React template",
   "scripts": {
     "build": "webpack --progress --config webpack/webpack.prod.js",
-    "lint:css": "stylelint './**/*/*.{scss,sass,css,ts,tsx,js,jsx}'",
-    "lint:css:fix": "npm run lint:css -- --fix",
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:js:fix": "npm run lint:js -- --fix",
     "start": "webpack serve --config webpack/webpack.dev.js",
@@ -17,6 +15,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "@loadable/component": "5.15.0",
+    "eventemitter3": "4.0.7",
     "js-cookie": "2.2.1",
     "polished": "4.1.3",
     "react": "16.14.0",
@@ -91,9 +90,6 @@
     "react-is": "17.0.2",
     "sass-loader": "12.1.0",
     "style-loader": "3.0.0",
-    "stylelint": "13.13.1",
-    "stylelint-config-standard": "22.0.0",
-    "stylelint-webpack-plugin": "2.2.2",
     "terser-webpack-plugin": "5.1.4",
     "typescript": "4.3.4",
     "webpack": "5.41.1",

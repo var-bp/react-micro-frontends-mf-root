@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { FONT_FAMILY_PRIMARY, FONT_WEIGHT_REGULAR } from 'ui_library/typography';
-import robotoRegular from './static/font/roboto-regular.woff2';
+import { FONT_FACE, FONT_FAMILY_PRIMARY, FONT_WEIGHT_REGULAR } from 'ui_library/typography';
 
 export default createGlobalStyle`
   *,
@@ -9,12 +8,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @font-face {
-    font-family: 'Roboto';
-    src: url(${robotoRegular}) format('woff2');
-    font-weight: 400;
-    font-display: optional;
-  }
+  ${FONT_FACE}
 
   body {
     margin: 0;

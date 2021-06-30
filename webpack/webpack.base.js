@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const { env, getSharedModules } = require('./utils');
@@ -82,16 +81,16 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: env.MICROFRONTEND_HOST_NAME,
+      filename: 'js/remoteEntry.js',
       remotes: {
         [env.MICROFRONTEND_REMOTE_1_NAME]: `${env.MICROFRONTEND_REMOTE_1_NAME}@${env.MICROFRONTEND_REMOTE_1_URL}`,
         [env.MICROFRONTEND_REMOTE_2_NAME]: `${env.MICROFRONTEND_REMOTE_2_NAME}@${env.MICROFRONTEND_REMOTE_2_URL}`,
         [env.MICROFRONTEND_REMOTE_3_NAME]: `${env.MICROFRONTEND_REMOTE_3_NAME}@${env.MICROFRONTEND_REMOTE_3_URL}`,
       },
+      exposes: {
+        './EventEmitterProvider': path.join(__dirname, '../src/contexts/EventEmitterProvider.tsx'),
+      },
       shared: getSharedModules(PACKAGE_JSON.dependencies),
-    }),
-    // A linter for CSS-like syntaxes like SCSS, Sass, Less and SugarSS
-    new StylelintPlugin({
-      files: '**/*.{scss,sass,css,ts,tsx,js,jsx}',
     }),
     new CopyWebpackPlugin({
       patterns: [
