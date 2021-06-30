@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { FONT_FAMILY_PRIMARY, FONT_WEIGHT_REGULAR } from 'ui_library/typography';
 import robotoRegular from './static/font/roboto-regular.woff2';
 
 export default createGlobalStyle`
@@ -9,7 +10,7 @@ export default createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'Roboto Regular';
+    font-family: 'Roboto';
     src: url(${robotoRegular}) format('woff2');
     font-weight: 400;
     font-display: optional;
@@ -17,9 +18,9 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: 'Roboto Regular', sans-serif;
+    font-family: ${FONT_FAMILY_PRIMARY};
     font-size: 16px;
-    font-weight: 400;
+    font-weight: ${FONT_WEIGHT_REGULAR};
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
