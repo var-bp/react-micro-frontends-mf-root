@@ -36,7 +36,7 @@ module.exports = merge(
               ecma: 'esnext',
             },
             compress: {
-              ecma: 6,
+              ecma: 8,
               warnings: false,
               // Disabled because of an issue with Uglify breaking seemingly valid code.
               // Pending further investigation:
@@ -48,10 +48,10 @@ module.exports = merge(
               inline: 2,
             },
             mangle: {
-              safari10: true,
+              safari10: false,
             },
             output: {
-              ecma: 6,
+              ecma: 8,
               comments: false,
               // Turned on because emoji and regex is not minified properly using default.
               ascii_only: true,
