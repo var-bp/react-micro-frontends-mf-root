@@ -87,9 +87,6 @@ module.exports = {
         [env.MICROFRONTEND_REMOTE_2_NAME]: `${env.MICROFRONTEND_REMOTE_2_NAME}@${env.MICROFRONTEND_REMOTE_2_URL}`,
         [env.MICROFRONTEND_REMOTE_3_NAME]: `${env.MICROFRONTEND_REMOTE_3_NAME}@${env.MICROFRONTEND_REMOTE_3_URL}`,
       },
-      exposes: {
-        './EventEmitterProvider': path.join(__dirname, '../src/contexts/EventEmitterProvider.tsx'),
-      },
       shared: getSharedModules(PACKAGE_JSON.dependencies),
     }),
     new CopyWebpackPlugin({

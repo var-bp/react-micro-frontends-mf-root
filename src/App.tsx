@@ -1,14 +1,6 @@
 import React from 'react';
 import { History } from 'history';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import {
-  mountFunction as REPOSITORY_1_MOUNT_FUNCTION,
-  unmountFunction as REPOSITORY_1_UNMOUNT_FUNCTION,
-} from 'repository_1/app';
-import {
-  mountFunction as REPOSITORY_2_MOUNT_FUNCTION,
-  unmountFunction as REPOSITORY_2_UNMOUNT_FUNCTION,
-} from 'repository_2/app';
 import useEventEmitter, { EventEmitter } from './hooks/useEventEmitter';
 import MicroFrontend from './MicroFrontend';
 import NotFound from './pages/NotFound';
@@ -21,25 +13,11 @@ interface Props {
 const RENDER_REPOSITORY_1 =
   (eventEmitter: EventEmitter) =>
   ({ history }: Props) =>
-    (
-      <MicroFrontend
-        eventEmitter={eventEmitter}
-        history={history}
-        mountFunction={REPOSITORY_1_MOUNT_FUNCTION}
-        unmountFunction={REPOSITORY_1_UNMOUNT_FUNCTION}
-      />
-    );
+    <MicroFrontend eventEmitter={eventEmitter} history={history} remoteEntry={import('repository_1/app')} />;
 const RENDER_REPOSITORY_2 =
   (eventEmitter: EventEmitter) =>
   ({ history }: Props) =>
-    (
-      <MicroFrontend
-        eventEmitter={eventEmitter}
-        history={history}
-        mountFunction={REPOSITORY_2_MOUNT_FUNCTION}
-        unmountFunction={REPOSITORY_2_UNMOUNT_FUNCTION}
-      />
-    );
+    <MicroFrontend eventEmitter={eventEmitter} history={history} remoteEntry={import('repository_2/app')} />;
 
 const App = (): JSX.Element => {
   const eventEmitter = useEventEmitter();
